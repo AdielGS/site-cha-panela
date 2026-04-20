@@ -131,4 +131,40 @@ async function enviarConfirmacao() {
     }
 }
 
-carregarNumeros();
+async function carregarNumeros() {
+    const grid = document.getElementById('numeros-grid');
+    
+    // Mostra o aviso de carregamento antes de tentar buscar os números
+    grid.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; font-weight: bold;'>Carregando lista de presentes...<br><span style='font-size: 0.8rem; font-weight: normal;'>(Isso pode levar até 1 minuto no primeiro acesso)</span></p>";
+
+    try {
+        const response = await fetch(`${API_URL}/numeros-disponiveis`);
+        if (!response.ok) throw new Error('Erro na comunicação');
+        
+        const disponiveis = await response.json();
+        const formArea = document.getElementById('form-area');
+        const pixArea = document.getElementById('pix-area');
+        
+        // Limpa o aviso de "Carregando..."
+        grid.innerHTML = ""; 
+
+        // Se todos os números acabaram, mostra o PIX
+        if (disponiveis.length === 0) {
+            formArea.classList.add('hidden');
+            pixArea.classList.remove('hidden');
+            return;
+        }
+
+        // Cria os botões na tela
+        disponiveis.forEach(num => {
+            const btn = document.createElement('div');
+            btn.className = 'num-btn';
+            btn.innerText = num;
+            btn.onclick = () => selecionarNumero(btn, num);
+            grid.appendChild(btn);
+        });
+    } catch (error) {
+        console.error("Erro:", error);
+        grid.innerHTML = "<p style='grid-column: 1 / -1; color: red; text-align: center;'>Não foi possível conectar ao servidor. Atualize a página e tente novamente.</p>";
+    }
+}
