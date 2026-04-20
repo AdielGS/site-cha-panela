@@ -1,4 +1,4 @@
-const API_URL = 'https://backend-cha-panela.onrender.com'; 
+const API_URL = 'https://backend-cha-panela.onrender.com/api';
 let numeroSelecionado = null;
 
 // Lista completa dos presentes
