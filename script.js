@@ -88,7 +88,24 @@ function selecionarNumero(btnElement, num) {
 
 async function enviarConfirmacao() {
     const nome = document.getElementById('nome').value.trim();
-    if (!nome) return alert('Digite seu nome completo.');
+    
+    // --- INÍCIO DA VALIDAÇÃO NOVA ---
+    // Verifica se tem apenas letras e espaços (incluindo acentos)
+    const apenasLetras = /^[a-zA-ZÀ-ÿ\s]+$/.test(nome);
+    // Separa o nome em pedaços (palavras) usando os espaços
+    const palavras = nome.split(/\s+/); 
+
+    if (!nome) {
+        return alert('Por favor, digite seu nome completo.');
+    }
+    if (!apenasLetras) {
+        return alert('Por favor, use apenas letras no seu nome (não use números ou símbolos).');
+    }
+    if (palavras.length < 2 || palavras[0].length < 2) {
+        return alert('Por favor, digite o seu nome e sobrenome corretamente.');
+    }
+    // --- FIM DA VALIDAÇÃO NOVA ---
+
     if (!numeroSelecionado) return alert('Escolha um número ou faça um PIX (neste caso, não precisa confirmar aqui).');
 
     const btnConfirmar = document.querySelector('.btn-confirmar');
