@@ -8,24 +8,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="card-convite">
         <div class="borda-interna">
             <header>
                 <h2>CHÁ DE PANELA</h2>
                 <h1>ADIEL<br>&<br>JULIA</h1>
                 <hr class="linha-divisoria">
-                <p class="data-local">SÁBADO<br>30 DE MAIO | ÀS 18H</p>
+                <p class="data-local">SÁBADO<br>30 DE MAIO | ÁS 18H</p>
                 <hr class="linha-divisoria">
             </header>
 
             <main id="form-area">
                 <div class="input-group">
-                    <input type="text" id="nome" placeholder="Seu Nome Completo" required>
+                    <input type="text" id="nome" placeholder="Nome: Seu Nome Completo" required>
                 </div>
                 
                 <div class="numbers-section">
-                    <p class="instrucao">ESCOLHA UM NÚMERO (OU CLIQUE NOS OCUPADOS PARA VER)</p>
-                    <div class="grid" id="numeros-grid"></div>
+                    <p class="instrucao">ESCOLHA UM NÚMERO DE PRESENTE (1 A 56)</p>
+                    <div class="grid" id="numeros-grid">
+                        </div>
                 </div>
 
                 <p id="presente-escolhido" class="presente-destaque hidden"></p>
@@ -36,8 +38,10 @@
             <section id="pix-area">
                 <div class="pix-card">
                     <p class="instrucao">PREFERE PRESENTEAR EM DINHEIRO? ENVIE UM PIX:</p>
-                    <div class="chave-pix">Chave: <strong>51064519814</strong></div>
-                    <p style="font-size: 0.75rem; margin-top: 8px;">(Não é necessário confirmar no site se optar pelo PIX)</p>
+                    <div class="chave-pix">
+                        Chave: <strong>51064519814</strong>
+                    </div>
+                    <p style="font-size: 0.8rem; margin-top: 10px;">(Se escolher o PIX, não precisa de selecionar um número na cartela)</p>
                 </div>
             </section>
             
@@ -46,6 +50,7 @@
             </footer>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
