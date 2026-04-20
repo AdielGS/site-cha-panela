@@ -1,4 +1,4 @@
-const API_URL = 'https://backend-cha-panela-production.up.railway.app/api'; 
+const API_URL = 'https://backend-cha-panela.onrender.com'; 
 let numeroSelecionado = null;
 
 // Lista completa dos presentes
