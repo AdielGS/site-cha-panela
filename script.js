@@ -130,8 +130,10 @@ async function enviarConfirmacao() {
         });
 
         if (response.ok) {
-            alert(`Obrigado, ${nome}! Presente confirmado.`);
-            window.location.reload(); 
+            // TROCAMOS O ALERT PELA TELA DE SUCESSO
+            mostrarSucesso(`Muito obrigado, ${nome}! Seu presente foi confirmado com sucesso.`);
+            // Repare que tiramos o window.location.reload() daqui, 
+            // pois ele agora está no botão "FECHAR" da tela de sucesso.
         } else {
             alert('Este número acabou de ser escolhido. Por favor, selecione outro.');
             window.location.reload();
@@ -179,12 +181,22 @@ async function confirmarPix() {
         });
 
         if (response.ok) {
-            alert(`Obrigado, ${nome}! Sua presença via PIX foi confirmada na lista dos noivos.`);
-            window.location.reload(); 
+            mostrarSucesso(`Muito obrigado, ${nome}! Sua presença via PIX foi confirmada.`);
         } else {
             alert('Erro ao confirmar. Tente novamente.');
         }
     } catch (error) {
         alert('Erro ao conectar com o servidor.');
     }
+
+    // Funções da Tela de Sucesso
+function mostrarSucesso(mensagem) {
+    document.getElementById('mensagem-sucesso').innerText = mensagem;
+    document.getElementById('modal-sucesso').classList.remove('hidden');
+}
+
+function fecharSucesso() {
+    document.getElementById('modal-sucesso').classList.add('hidden');
+    window.location.reload(); // Atualiza a página só depois que o convidado clica em fechar
+}
 }
