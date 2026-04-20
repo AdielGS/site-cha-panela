@@ -200,3 +200,34 @@ footer p {
     margin-bottom: 5px;
     font-family: 'Cinzel', serif;
 }
+
+/* Estilo para os números já escolhidos */
+.num-btn.indisponivel {
+    background-color: #d3d3d3;
+    color: #777;
+    border-color: #bbb;
+    cursor: not-allowed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.num-btn.indisponivel:hover {
+    background-color: #d3d3d3;
+    color: #777;
+    transform: none;
+    box-shadow: none;
+}
+
+.nome-escolhido {
+    font-size: 0.55rem;
+    margin-top: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 90%;
+}
