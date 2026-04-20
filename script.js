@@ -1,5 +1,5 @@
 // URL da sua API Spring Boot (Lembre-se de mudar quando hospedar o backend)
-const API_URL = 'http://localhost:8080/api'; 
+const API_URL = 'https://backend-cha-panela-production.up.railway.app/api';
 let numeroSelecionado = null;
 
 async function carregarNumeros() {
