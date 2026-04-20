@@ -180,3 +180,23 @@ footer p {
     .borda-interna { padding: 30px 10px; }
     .grid { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); }
 }
+
+.presente-destaque {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #7ea8c9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.presente-destaque span {
+    color: #8ba888; /* Verde aquarelado */
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    font-family: 'Cinzel', serif;
+}
