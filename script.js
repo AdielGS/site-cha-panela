@@ -77,13 +77,23 @@ async function carregarNumeros() {
 }
 
 function selecionarNumero(btnElement, num) {
+    // Se o botão já tiver dono, não faz nada
     if (btnElement.classList.contains('indisponivel')) return;
+
+    // Remove a cor verde dos outros botões e pinta o que foi clicado
     document.querySelectorAll('.num-btn:not(.indisponivel)').forEach(b => b.classList.remove('selected'));
     btnElement.classList.add('selected');
     numeroSelecionado = num;
-    const caixaPresente = document.getElementById('presente-escolhido');
-    caixaPresente.innerHTML = `<span>PRESENTE Nº ${num}</span> ${listaPresentes[num]}`;
-    caixaPresente.classList.remove('hidden');
+
+    // EM VEZ DE MOSTRAR EMBAIXO, ABRE A CAIXA BONITA (MODAL)
+    document.getElementById('modal-titulo').innerText = `🎁 Presente Nº ${num}`;
+    document.getElementById('modal-desc').innerText = listaPresentes[num];
+    
+    // Coloca uma mensagem de incentivo para ele lembrar de confirmar
+    document.getElementById('modal-nome').innerHTML = `<br><strong style="color: #8ba888;">Ótima escolha!</strong><br><span style="font-size: 0.9rem;">Feche este aviso e clique em "Confirmar" lá embaixo para salvar.</span>`;
+    
+    // Mostra a caixa na tela
+    document.getElementById('modal-presente').classList.remove('hidden');
 }
 
 async function enviarConfirmacao() {
