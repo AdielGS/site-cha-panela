@@ -48,11 +48,20 @@ async function carregarNumeros() {
 
         for (let i = 1; i <= 56; i++) {
             const btn = document.createElement('div');
+            
             if (escolhidosMap[i]) {
+                // Número já tem dono
                 btn.className = 'num-btn indisponivel';
                 const primeiroNome = escolhidosMap[i].split(' ')[0];
                 btn.innerHTML = `<span>${i}</span><span class="nome-escolhido">${primeiroNome}</span>`;
+                
+                // NOVIDADE: Se clicar no número bloqueado, mostra qual é o presente e quem deu!
+                btn.onclick = () => {
+                    alert(`🎁 Presente Nº ${i}: ${listaPresentes[i]}\n\nEscolhido por: ${escolhidosMap[i]}`);
+                };
+                
             } else {
+                // Número livre
                 btn.className = 'num-btn';
                 btn.innerText = i;
                 btn.onclick = () => selecionarNumero(btn, i);
