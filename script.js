@@ -54,7 +54,6 @@ async function carregarNumeros() {
                 const primeiroNome = escolhidosMap[i].split(' ')[0];
                 btn.innerHTML = `<span>${i}</span><span class="nome-escolhido">${primeiroNome}</span>`;
                 
-                // NOVIDADE: Abre o modal bonitão em vez do alert
                 btn.onclick = () => abrirModal(i, listaPresentes[i], escolhidosMap[i]);
                 
             } else {
@@ -77,32 +76,22 @@ async function carregarNumeros() {
 }
 
 function selecionarNumero(btnElement, num) {
-    // Se o botão já tiver dono, não faz nada
     if (btnElement.classList.contains('indisponivel')) return;
 
-    // Remove a cor verde dos outros botões e pinta o que foi clicado
     document.querySelectorAll('.num-btn:not(.indisponivel)').forEach(b => b.classList.remove('selected'));
     btnElement.classList.add('selected');
     numeroSelecionado = num;
 
-    // EM VEZ DE MOSTRAR EMBAIXO, ABRE A CAIXA BONITA (MODAL)
     document.getElementById('modal-titulo').innerText = `🎁 Presente Nº ${num}`;
     document.getElementById('modal-desc').innerText = listaPresentes[num];
-    
-    // Coloca uma mensagem de incentivo para ele lembrar de confirmar
     document.getElementById('modal-nome').innerHTML = `<br><strong style="color: #8ba888;">Ótima escolha!</strong><br><span style="font-size: 0.9rem;">Feche este aviso e clique em "Confirmar" lá embaixo para salvar.</span>`;
-    
-    // Mostra a caixa na tela
     document.getElementById('modal-presente').classList.remove('hidden');
 }
 
 async function enviarConfirmacao() {
     const nome = document.getElementById('nome').value.trim();
     
-    // --- INÍCIO DA VALIDAÇÃO NOVA ---
-    // Verifica se tem apenas letras e espaços (incluindo acentos)
     const apenasLetras = /^[a-zA-ZÀ-ÿ\s]+$/.test(nome);
-    // Separa o nome em pedaços (palavras) usando os espaços
     const palavras = nome.split(/\s+/); 
 
     if (!nome) {
@@ -114,7 +103,6 @@ async function enviarConfirmacao() {
     if (palavras.length < 2 || palavras[0].length < 2) {
         return alert('Por favor, digite o seu nome e sobrenome corretamente.');
     }
-    // --- FIM DA VALIDAÇÃO NOVA ---
 
     if (!numeroSelecionado) return alert('Escolha um número ou faça um PIX (neste caso, não precisa confirmar aqui).');
 
@@ -130,10 +118,7 @@ async function enviarConfirmacao() {
         });
 
         if (response.ok) {
-            // TROCAMOS O ALERT PELA TELA DE SUCESSO
             mostrarSucesso(`Muito obrigado, ${nome}! Seu presente foi confirmado com sucesso.`);
-            // Repare que tiramos o window.location.reload() daqui, 
-            // pois ele agora está no botão "FECHAR" da tela de sucesso.
         } else {
             alert('Este número acabou de ser escolhido. Por favor, selecione outro.');
             window.location.reload();
@@ -145,7 +130,6 @@ async function enviarConfirmacao() {
     }
 }
 
-// Funções para abrir e fechar a caixa bonita
 function abrirModal(num, presente, nome) {
     document.getElementById('modal-titulo').innerText = `🎁 Presente Nº ${num}`;
     document.getElementById('modal-desc').innerText = presente;
@@ -159,7 +143,6 @@ function fecharModal() {
 
 carregarNumeros();
 
-// --- NOVA FUNÇÃO PARA QUEM FEZ PIX ---
 async function confirmarPix() {
     const nome = document.getElementById('nome').value.trim();
     
@@ -170,7 +153,6 @@ async function confirmarPix() {
     if (!apenasLetras) return alert('Por favor, use apenas letras no seu nome.');
     if (palavras.length < 2 || palavras[0].length < 2) return alert('Por favor, digite o seu nome e sobrenome corretamente.');
 
-    // Gera um "número fantasma" aleatório entre 1000 e 9999 para não bugar a cartela
     const numeroFantasmaPix = Math.floor(Math.random() * 9000) + 1000;
 
     try {
@@ -188,8 +170,9 @@ async function confirmarPix() {
     } catch (error) {
         alert('Erro ao conectar com o servidor.');
     }
+} // <- AGORA A CHAVE DE FECHAMENTO DO PIX ESTÁ NO LUGAR CERTO!
 
-    // Funções da Tela de Sucesso
+// Funções da Tela de Sucesso (Agora livres e acessíveis por todos!)
 function mostrarSucesso(mensagem) {
     document.getElementById('mensagem-sucesso').innerText = mensagem;
     document.getElementById('modal-sucesso').classList.remove('hidden');
@@ -197,6 +180,5 @@ function mostrarSucesso(mensagem) {
 
 function fecharSucesso() {
     document.getElementById('modal-sucesso').classList.add('hidden');
-    window.location.reload(); // Atualiza a página só depois que o convidado clica em fechar
-}
+    window.location.reload(); 
 }
