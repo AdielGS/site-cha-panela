@@ -50,18 +50,14 @@ async function carregarNumeros() {
             const btn = document.createElement('div');
             
             if (escolhidosMap[i]) {
-                // Número já tem dono
                 btn.className = 'num-btn indisponivel';
                 const primeiroNome = escolhidosMap[i].split(' ')[0];
                 btn.innerHTML = `<span>${i}</span><span class="nome-escolhido">${primeiroNome}</span>`;
                 
-                // NOVIDADE: Se clicar no número bloqueado, mostra qual é o presente e quem deu!
-                btn.onclick = () => {
-                    alert(`🎁 Presente Nº ${i}: ${listaPresentes[i]}\n\nEscolhido por: ${escolhidosMap[i]}`);
-                };
+                // NOVIDADE: Abre o modal bonitão em vez do alert
+                btn.onclick = () => abrirModal(i, listaPresentes[i], escolhidosMap[i]);
                 
             } else {
-                // Número livre
                 btn.className = 'num-btn';
                 btn.innerText = i;
                 btn.onclick = () => selecionarNumero(btn, i);
@@ -69,7 +65,6 @@ async function carregarNumeros() {
             grid.appendChild(btn);
         }
 
-        // Se todos os presentes acabarem, desativa apenas a seleção de números, mas mantém o PIX
         if (convidados.length >= 56) {
             document.querySelector('.numbers-section p').innerText = "TODOS OS PRESENTES FORAM ESCOLHIDOS!";
             document.getElementById('form-area').style.display = 'none';
@@ -96,6 +91,10 @@ async function enviarConfirmacao() {
     if (!nome) return alert('Digite seu nome completo.');
     if (!numeroSelecionado) return alert('Escolha um número ou faça um PIX (neste caso, não precisa confirmar aqui).');
 
+    const btnConfirmar = document.querySelector('.btn-confirmar');
+    btnConfirmar.innerText = "PROCESSANDO...";
+    btnConfirmar.disabled = true;
+
     try {
         const response = await fetch(`${API_URL}/confirmar`, {
             method: 'POST',
@@ -112,7 +111,21 @@ async function enviarConfirmacao() {
         }
     } catch (error) {
         alert('Erro ao confirmar. Tente novamente mais tarde.');
+        btnConfirmar.innerText = "CONFIRMAR PRESENÇA E PRESENTE";
+        btnConfirmar.disabled = false;
     }
+}
+
+// Funções para abrir e fechar a caixa bonita
+function abrirModal(num, presente, nome) {
+    document.getElementById('modal-titulo').innerText = `🎁 Presente Nº ${num}`;
+    document.getElementById('modal-desc').innerText = presente;
+    document.getElementById('modal-nome').innerHTML = `Escolhido por: <strong>${nome}</strong>`;
+    document.getElementById('modal-presente').classList.remove('hidden');
+}
+
+function fecharModal() {
+    document.getElementById('modal-presente').classList.add('hidden');
 }
 
 carregarNumeros();

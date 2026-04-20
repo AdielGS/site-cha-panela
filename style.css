@@ -1,10 +1,3 @@
-/* Paleta baseada no convite:
-   Fundo principal: Azul Claro (#cde3f5)
-   Textos: Preto/Cinza Escuro (#1a1a1a)
-   Botão Confirmar: Verde das folhas (#8ba888)
-   Destaques/Hover: Azul um pouco mais forte (#a6ccee)
-*/
-
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +6,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #cde3f5; /* Azul claro do fundo */
+    background-color: #cde3f5; 
     color: #1a1a1a;
     display: flex;
     justify-content: center;
@@ -31,149 +24,41 @@ body {
 }
 
 .borda-interna {
-    border: 2px solid #a6ccee; /* Borda azul do convite */
+    border: 2px solid #a6ccee; 
     padding: 40px 20px;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.3); /* Leve clareada no centro */
+    background-color: rgba(255, 255, 255, 0.3); 
 }
 
-header h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-}
+header h2 { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 400; letter-spacing: 2px; margin-bottom: 20px; }
+header h1 { font-family: 'Cinzel', serif; font-size: 3rem; font-weight: 400; line-height: 1.2; margin-bottom: 20px; }
+.linha-divisoria { border: none; border-top: 1px solid #7ea8c9; width: 60%; margin: 15px auto; }
+.data-local { font-size: 1.1rem; font-weight: 600; letter-spacing: 1px; }
 
-header h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 3rem;
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
+.input-group { margin: 30px 0 20px; }
+.input-group input { width: 100%; max-width: 400px; padding: 12px 15px; border: 1px solid #7ea8c9; border-radius: 8px; font-size: 1rem; font-family: 'Montserrat', sans-serif; background-color: rgba(255, 255, 255, 0.8); text-align: center; }
+.input-group input:focus { outline: none; border-color: #1a1a1a; }
+.instrucao { font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 1px; }
 
-.linha-divisoria {
-    border: none;
-    border-top: 1px solid #7ea8c9;
-    width: 60%;
-    margin: 15px auto;
-}
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(45px, 1fr)); gap: 8px; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.num-btn { background: rgba(255, 255, 255, 0.7); border: 1px solid #a6ccee; padding: 10px 0; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; color: #333; }
+.num-btn:hover { background: #a6ccee; color: #000; }
+.num-btn.selected { background: #8ba888; color: #fff; border-color: #6a8567; transform: scale(1.05); box-shadow: 0 4px 8px rgba(139, 168, 136, 0.4); }
 
-.data-local {
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
+.num-btn.indisponivel { background-color: #d3d3d3; color: #777; border-color: #bbb; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px 0; }
+.num-btn.indisponivel:hover { transform: scale(1.05); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+.nome-escolhido { font-size: 0.55rem; margin-top: 3px; font-weight: 600; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 90%; }
 
-.input-group {
-    margin: 30px 0 20px;
-}
+.btn-confirmar { background: #8ba888; color: #fff; border: none; padding: 15px 30px; font-size: 1rem; font-weight: 600; border-radius: 30px; cursor: pointer; transition: background 0.3s ease; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; margin-bottom: 20px; width: 100%; max-width: 400px; }
+.btn-confirmar:hover { background: #6a8567; }
 
-.input-group input {
-    width: 100%;
-    max-width: 400px;
-    padding: 12px 15px;
-    border: 1px solid #7ea8c9;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-}
+.hidden { display: none !important; }
+.pix-card { background: rgba(255, 255, 255, 0.6); border: 1px dashed #7ea8c9; padding: 20px; border-radius: 8px; margin-top: 20px; }
+.chave-pix { font-size: 1.2rem; color: #1a1a1a; margin-top: 10px; }
+footer p { font-size: 0.85rem; font-weight: 600; margin-top: 30px; letter-spacing: 1px; }
 
-.input-group input:focus {
-    outline: none;
-    border-color: #1a1a1a;
-}
-
-.instrucao {
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
-    gap: 8px;
-    margin-bottom: 30px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.num-btn {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid #a6ccee;
-    padding: 10px 0;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: #333;
-}
-
-.num-btn:hover {
-    background: #a6ccee;
-    color: #000;
-}
-
-.num-btn.selected {
-    background: #8ba888; /* Verde aquarelado das folhas */
-    color: #fff;
-    border-color: #6a8567;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(139, 168, 136, 0.4);
-}
-
-.btn-confirmar {
-    background: #8ba888;
-    color: #fff;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 400px;
-}
-
-.btn-confirmar:hover {
-    background: #6a8567;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.pix-card {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px dashed #7ea8c9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-.chave-pix {
-    font-size: 1.2rem;
-    color: #1a1a1a;
-    margin-top: 10px;
-}
-
-footer p {
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-top: 30px;
-    letter-spacing: 1px;
-}
+.presente-destaque { background-color: rgba(255, 255, 255, 0.8); border: 1px solid #7ea8c9; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 1.1rem; font-weight: 600; color: #1a1a1a; transition: all 0.3s ease; }
+.presente-destaque span { color: #8ba888; display: block; font-size: 0.9rem; margin-bottom: 5px; font-family: 'Cinzel', serif; }
 
 @media (max-width: 500px) {
     header h1 { font-size: 2.2rem; }
@@ -181,53 +66,40 @@ footer p {
     .grid { grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); }
 }
 
-.presente-destaque {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid #7ea8c9;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    transition: all 0.3s ease;
+/* =========================================
+   ESTILOS DO MODAL (CAIXA BONITA)
+========================================= */
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escurecido */
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
 }
 
-.presente-destaque span {
-    color: #8ba888; /* Verde aquarelado */
-    display: block;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-    font-family: 'Cinzel', serif;
+.modal-content {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(205, 227, 245, 0.95) 100%);
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    max-width: 400px; width: 90%;
+    border: 2px dashed #8ba888;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: surgirModal 0.3s ease-out;
 }
 
-/* Estilo para os números já escolhidos */
-.num-btn.indisponivel {
-    background-color: #d3d3d3;
-    color: #777;
-    border-color: #bbb;
-    cursor: not-allowed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 0;
+@keyframes surgirModal {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
-.num-btn.indisponivel:hover {
-    background-color: #d3d3d3;
-    color: #777;
-    transform: none;
-    box-shadow: none;
+.fechar-modal {
+    position: absolute; top: 10px; right: 20px;
+    font-size: 1.8rem; font-weight: bold; color: #7ea8c9;
+    cursor: pointer; transition: 0.2s;
 }
 
-.nome-escolhido {
-    font-size: 0.55rem;
-    margin-top: 3px;
-    font-weight: 600;
-    text-transform: uppercase;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 90%;
-}
+.fechar-modal:hover { color: #1a1a1a; }
+#modal-titulo { font-family: 'Cinzel', serif; font-size: 1.3rem; color: #8ba888; margin-bottom: 15px; }
+#modal-desc { font-size: 1.1rem; font-weight: 600; color: #1a1a1a; }
+#modal-nome { font-size: 0.95rem; color: #555; }
