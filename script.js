@@ -146,3 +146,35 @@ function fecharModal() {
 }
 
 carregarNumeros();
+
+// --- NOVA FUNÇÃO PARA QUEM FEZ PIX ---
+async function confirmarPix() {
+    const nome = document.getElementById('nome').value.trim();
+    
+    const apenasLetras = /^[a-zA-ZÀ-ÿ\s]+$/.test(nome);
+    const palavras = nome.split(/\s+/); 
+
+    if (!nome) return alert('Por favor, digite seu nome completo lá no campo de cima primeiro.');
+    if (!apenasLetras) return alert('Por favor, use apenas letras no seu nome.');
+    if (palavras.length < 2 || palavras[0].length < 2) return alert('Por favor, digite o seu nome e sobrenome corretamente.');
+
+    // Gera um "número fantasma" aleatório entre 1000 e 9999 para não bugar a cartela
+    const numeroFantasmaPix = Math.floor(Math.random() * 9000) + 1000;
+
+    try {
+        const response = await fetch(`${API_URL}/confirmar`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome: nome + " (PIX)", numeroEscolhido: numeroFantasmaPix })
+        });
+
+        if (response.ok) {
+            alert(`Obrigado, ${nome}! Sua presença via PIX foi confirmada na lista dos noivos.`);
+            window.location.reload(); 
+        } else {
+            alert('Erro ao confirmar. Tente novamente.');
+        }
+    } catch (error) {
+        alert('Erro ao conectar com o servidor.');
+    }
+}
