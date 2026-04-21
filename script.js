@@ -29,7 +29,24 @@ const listaPresentes = {
     49: "Manta decorativa para sofá", 50: "Relógio de parede moderno",
     51: "Toalha de rosto", 52: "Toalha de banho",
     53: "A Pá", 54: "Vassoura",
-    55: "Rodo", 56: "3 Porta detergente"
+    55: "Rodo", 56: "3 Porta detergente",
+    57: "Forma de silicone para gelo ou bombons", 58: "Centrifuga de salada",
+    59: "Descascador de legumes manual", 60: "Pincel de silicone",
+    61: "Tesoura de cozinha", 62: "Porta-rolo de papel toalha",
+    63: "Rolo de macarrão", 64: "Termômetro culinário",
+    65: "Cesto de cozimento a vapor (inox)", 66: "Ganchos adesivos (tipo Command)",
+    67: "Organizador de xícaras", 68: "Cestos organizadores plásticos",
+    69: "Etiquetadora manual ou adesivos de lousa", 70: "Protetor de prateleira (emborrachado)",
+    71: "Lugar americano (conjunto)", 72: "Sousplat",
+    73: "Argolas para guardanapos", 74: "Queijeira",
+    75: "Petisqueira", 76: "Bandeja de café da manhã",
+    77: "Suporte para bolos/tortas", 78: "MOP (Esfregão)",
+    79: "Sacos para lavar roupas delicadas", 80: "Pregadores de roupa de qualidade",
+    81: "Varal de chão ou de parede", 82: "Cesto de roupas limpas",
+    83: "Velas perfumadas ou difusores", 84: "Almofadas decorativas",
+    85: "Tapete de porta (Capacho)", 86: "Vaso para flores",
+    87: "Prensa francesa", 88: "Conjunto de ramequins",
+    89: "Aparelho de fondue"
 };
 
 async function carregarNumeros() {
