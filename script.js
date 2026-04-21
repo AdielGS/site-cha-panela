@@ -63,7 +63,7 @@ async function carregarNumeros() {
 
         grid.innerHTML = ""; 
 
-        for (let i = 1; i <= 56; i++) {
+        for (let i = 1; i <= 89; i++) {
             const btn = document.createElement('div');
             
             if (escolhidosMap[i]) {
@@ -81,7 +81,7 @@ async function carregarNumeros() {
             grid.appendChild(btn);
         }
 
-        if (convidados.length >= 56) {
+        if (convidados.length >= 89) {
             document.querySelector('.numbers-section p').innerText = "TODOS OS PRESENTES FORAM ESCOLHIDOS!";
             document.getElementById('form-area').style.display = 'none';
         }
